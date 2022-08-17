@@ -1,0 +1,28 @@
+{
+  "SkipTime": 0.0,
+  "StealInventory": false,
+
+  "RestrictHolds": true,
+  "Interior": {
+    "Enable": true,
+    "RequireKeywords": [
+      "LocTypeInn",
+      "LocTypeCity",
+      "LocTypeTown"
+    ],
+    "RestrictTime": true
+  },
+  "Exterior": {
+    "Enable": true,
+    "Wilderness": true,
+    "RestrictTime": false
+  },
+
+  "AbductionProtection":
+  {
+    "Followers": true,
+    "Housecarl": true,
+    "Spouse": false,
+    "Other": false
+  }
+}
