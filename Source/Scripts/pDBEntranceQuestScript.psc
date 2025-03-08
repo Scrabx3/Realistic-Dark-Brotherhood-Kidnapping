@@ -14,9 +14,9 @@ ImageSpaceModifier Property Woozy Auto
 Event OnSleepStart(float afSleepStartTime, float afDesiredSleepEndTime)
 ; SCRAB EDIT ----------------------
 	Actor Player = Game.GetPlayer()
+	; ----------------- Time
 	; Location PlayerLoc = Player.GetCurrentLocation()
-	; 1. Check Location
-	; Debug.Trace("Location = " + PlayerLoc)
+	; ; Debug.Trace("Location = " + PlayerLoc)
 	; If(PlayerLoc)
 	; 	Keyword LocTypeInn = Game.GetForm(0x1CB87) as Keyword
 	; 	Keyword LocTypeCity = Game.GetForm(0x13168) as Keyword
@@ -24,16 +24,16 @@ Event OnSleepStart(float afSleepStartTime, float afDesiredSleepEndTime)
 	; 	Keyword LocTypePlayerHouse = Game.GetForm(0xFC1A3) as Keyword
 	; 	; Debug.Trace("LocTypeInn = " + LocTypeInn + "LocTypeCity = " + LocTypeCity + "LocTypeTown = " + LocTypeTown + "LocTypePlayerHouse = " + LocTypePlayerHouse)
 	; 	If(PlayerLoc.HasKeyword(LocTypeInn) || PlayerLoc.HasKeyword(LocTypeCity) || PlayerLoc.HasKeyword(LocTypeTown) || PlayerLoc.HasKeyword(LocTypePlayerHouse))
-	;			If IsTimeRestricted()
-	;				; Debug.Trace("Sleeping in a filtered Location mid day")
-	;				return
-  ; 		EndIf
+	; 		If IsTimeRestricted()
+	; 			; Debug.Trace("Sleeping in a filtered Location mid day")
+	; 			return
+	; 		EndIf
 	; 	EndIf
 	; EndIf
-	; ; 2. Location
+	; ; ----------------- Location
 	; If(!InNearbyHold())
 	; 	return
-	;	EndIf
+	; EndIf
 ; JCONTAINER CODE -----------------
 	int config = JValue.ReadFromFile("Data\\SKSE\\RDBK\\Settings.json")
 	If(!config)
@@ -45,7 +45,6 @@ Event OnSleepStart(float afSleepStartTime, float afDesiredSleepEndTime)
 	ElseIf(IsProtected(config))
 		return
 	EndIf
-	; TODO: Validation stuff
 	If(Player.IsInInterior())
 		int interior = JMAp.getObj(config, "Interior", 0)
 		If(!interior || !JMap.getInt(interior, "Enabled", 0))
